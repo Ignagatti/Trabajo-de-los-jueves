@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Córdoba Rockea — Ingresá</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    background: #c8bfb0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 16px;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .ticket {
+    width: 420px;
+    background: #f0ebe0;
+    border: 2.5px solid #1a1a1a;
+    box-shadow: 4px 4px 0 #999;
+    position: relative;
+  }
+
+  .ticket-header {
+    padding: 18px 32px 14px;
+    text-align: center;
+    border-bottom: 1.5px solid #1a1a1a;
+  }
+
+  .ticket-header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 1.05;
+    transform: rotate(-2deg);
+  }
+
+  .ticket-header .festival {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 6px;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    margin-top: 3px;
+    display: block;
+  }
+
+  .ticket-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 36px;
+    border-bottom: 1.5px solid #1a1a1a;
+  }
+
+  .meta-date, .meta-time { text-align: center; }
+
+  .meta-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1;
+    display: block;
+  }
+
+  .meta-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #555;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .guitar-icon { font-size: 30px; line-height: 1; }
+
+  .ticket-venue {
+    text-align: center;
+    padding: 10px 32px 9px;
+    border-bottom: 1.5px dashed #1a1a1a;
+  }
+
+  .ticket-venue h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+  }
+
+  .ticket-venue span {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: #666;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .ticket-form {
+    padding: 22px 28px 28px;
+  }
+
+  .section-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  .field label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #444;
+  }
+
+  .field input {
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid rgba(26,26,26,0.3);
+    padding: 7px 0;
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    color: #1a1a1a;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .field input::placeholder { color: #bbb; font-size: 13px; }
+  .field input:focus { border-bottom-color: #1a1a1a; }
+
+  .forgot {
+    text-align: right;
+    margin-top: -8px;
+    margin-bottom: 6px;
+  }
+
+  .forgot a {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: #666;
+    text-decoration: none;
+  }
+
+  .dashed-sep {
+    border: none;
+    border-top: 1.5px dashed rgba(26,26,26,0.25);
+    margin: 6px 0 18px;
+  }
+
+  .btn-submit {
+    width: 100%;
+    background: #c97a52;
+    border: none;
+    color: #f0ebe0;
+    padding: 16px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background 0.15s, transform 0.1s;
+  }
+
+  .btn-submit:hover { background: #b56840; }
+  .btn-submit:active { transform: scale(0.98); }
+
+  .ticket-footer {
+    border-top: 1.5px dashed #1a1a1a;
+    padding: 12px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ticket-footer span {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="ticket">
+  <div class="perf-left"></div>
+  <div class="perf-right"></div>
+
+  <div class="ticket-header">
+    <h1>Córdoba<br>Rockea</h1>
+    <span class="festival">Festival</span>
+  </div>
+
+  <div class="ticket-meta">
+    <div class="meta-date">
+      <span class="meta-num">16</span>
+      <span class="meta-label">NOV</span>
+    </div>
+    <div class="guitar-icon">🎸</div>
+    <div class="meta-time">
+      <span class="meta-num">21:00</span>
+      <span class="meta-label">HS</span>
+    </div>
+  </div>
+
+  <div class="ticket-venue">
+    <h2>Estadio Kempes</h2>
+    <span>Córdoba</span>
+  </div>
+
+  <div class="ticket-form">
+    <span class="section-label">Ingresá a tu cuenta</span>
+
+    <div class="field">
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" placeholder="tu@email.com" autocomplete="email"/>
+    </div>
+
+    <div class="field">
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" placeholder="••••••••" autocomplete="current-password"/>
+    </div>
+
+    <button class="btn-submit" type="button" onclick="window.location.href='registro.html'">
+      Ingresar
+    </button>
+  </div>
+
+  <div class="ticket-footer">
+    <span>Boleto General · $18.000</span>
+    <span>Puerta C · 19:30</span>
+  </div>
+</div>
+
+</body>
+</html>
