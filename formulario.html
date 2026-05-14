@@ -1,1 +1,238 @@
-sd
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Córdoba Rockea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #d4ccbd;
+            --card-bg: #f4ecdf;
+            --text-color: #000000;
+            --btn-color: #e08b64;
+            --btn-shadow: #c67651;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+        }
+
+        .ticket-card {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px 30px;
+            border: 2px solid var(--text-color);
+            box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.15);
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .header {
+            transform: rotate(-2deg);
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .header h2 {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin: 5px 0 0 0;
+            text-transform: uppercase;
+        }
+
+        .solid-divider {
+            border: none;
+            border-top: 2px solid var(--text-color);
+            margin: 25px 0;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .dotted-divider {
+            border: none;
+            border-top: 2px dotted var(--text-color);
+            margin: 25px 0;
+        }
+
+        .restriction-notice {
+            font-size: 13px;
+            font-weight: 800;
+            background-color: var(--text-color);
+            color: var(--card-bg);
+            padding: 10px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 1;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"] {
+            background: transparent;
+            border: 1px solid var(--text-color);
+            padding: 10px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            outline: none;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .age-checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 1px solid var(--text-color);
+            padding: 10px;
+        }
+
+        .age-checkbox-group input[type="checkbox"] {
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .age-checkbox-group label {
+            margin: 0;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        button.submit-btn {
+            background-color: var(--btn-color);
+            color: white;
+            border: none;
+            border-bottom: 4px solid var(--btn-shadow);
+            padding: 15px 20px;
+            width: 100%;
+            border-radius: 25px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 10px;
+            transition: transform 0.1s, border-width 0.1s;
+        }
+
+        button.submit-btn:active {
+            transform: translateY(4px);
+            border-bottom-width: 0px;
+            margin-bottom: 4px;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ticket-card">
+        <div class="header">
+            <h1>CÓRDOBA<br>ROCKEA</h1>
+            <h2>FESTIVAL</h2>
+        </div>
+
+        <hr class="solid-divider">
+
+        <div class="restriction-notice">
+            Evento exclusivo para mayores de 21 y menores de 60 años
+        </div>
+
+        <form id="registroForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input type="text" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>DNI</label>
+                    <input type="text" inputmode="numeric" pattern="[0-9]*" minlength="7" maxlength="8" required>
+                </div>
+                <div class="form-group">
+                    <label>Edad (21-59)</label>
+                    <div class="age-checkbox-group">
+                        <input type="checkbox" id="ageCheck" required>
+                        <label for="ageCheck">Confirmo edad</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label>Correo Electrónico</label>
+                <input type="email" required>
+            </div>
+
+            <hr class="dotted-divider">
+
+            <button type="submit" class="submit-btn">ENVIAR REGISTRO</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
